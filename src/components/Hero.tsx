@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { ArrowDown, Download } from "lucide-react";
 import MatrixRain from "./MatrixRain";
@@ -10,7 +9,6 @@ function Hero() {
       <div className="hero-grid" />
 
       <div className="hero-content">
-
         {/* System Status */}
         <motion.div
           className="terminal-status"
@@ -49,8 +47,6 @@ function Hero() {
           transition={{ delay: 0.6 }}
         >
           Aspiring Penetration Tester
-         
-        
         </motion.h2>
 
         {/* Description */}
@@ -61,9 +57,9 @@ function Hero() {
           transition={{ delay: 0.8 }}
         >
           Cybersecurity enthusiast focused on web application security,
-          penetration testing, and vulnerability assessment. I build
-          security tools like ReconX and PhishGuard while exploring
-          new ways to make the digital world more secure.
+          penetration testing, and vulnerability assessment. I build security
+          tools like ReconX and PhishGuard while exploring new ways to make the
+          digital world more secure.
         </motion.p>
 
         {/* Buttons */}
@@ -104,7 +100,7 @@ function Hero() {
           </a>
 
           <a
-            href="https://www.linkedin.com/in/your-username/"
+            href="https://www.linkedin.com/in/rishiraj-deka-56aab4332/"
             target="_blank"
             rel="noopener noreferrer"
           >
