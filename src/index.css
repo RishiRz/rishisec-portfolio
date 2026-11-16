@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'Space Grotesk', sans-serif;
+
+  color: #e6edf3;
+  background: #05080d;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+  --bg-primary: #05080d;
+  --bg-secondary: #0a0f16;
+  --bg-card: rgba(10, 15, 22, 0.85);
+
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+
+  --accent: #00ff88;
+  --accent-secondary: #00d9ff;
+  --accent-danger: #ff2e63;
+
+  --border: rgba(0, 255, 136, 0.18);
+  --glow: 0 0 10px rgba(0, 255, 136, 0.4);
+  --mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+/* ===== MATRIX RAIN BACKGROUND ===== */
+
+.matrix-rain {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  z-index: -1;
+
+  pointer-events: none;
+}
+
+/* Embedded rain — fills its positioned parent (e.g. the hero section) */
+
+.matrix-rain--embedded {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+}
+
+/* ===== GLOBAL CRT OVERLAY ===== */
+
+body::before {
+  content: '';
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  pointer-events: none;
+
+  background:
+    repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.12) 3px);
+
+  mix-blend-mode: multiply;
+}
+
+body::after {
+  content: '';
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9998;
+
+  pointer-events: none;
+
+  background: radial-gradient(ellipse at center,
+      transparent 55%,
+      rgba(0, 0, 0, 0.45) 100%);
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: #000;
+  text-shadow: none;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #05080d;
+
+  border-left: 1px solid rgba(0, 255, 136, 0.08);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom,
+      #00ff88,
+      #00a858);
+
+  border-radius: 0;
+
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Global container */
+
+.container {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+}
+
+/* Section */
+
+.section {
+  padding: 110px 0;
+
+  position: relative;
+
+  scroll-margin-top: 72px;
+}
+
+.section-title {
+  margin-bottom: 60px;
+}
+
+.section-label {
+  color: var(--accent);
+
+  font-family: var(--mono);
+
+  font-size: 14px;
+
+  margin-bottom: 14px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.section-label::before {
+  content: '[';
+
+  color: rgba(0, 255, 136, 0.4);
+}
+
+.section-label::after {
+  content: ']';
+
+  color: rgba(0, 255, 136, 0.4);
+}
+
+.section-title h2 {
+  font-size: clamp(32px, 5vw, 52px);
+
+  line-height: 1.1;
+
+  text-shadow:
+    0 0 30px rgba(0, 255, 136, 0.12);
+}
+
+.section-title h2::before {
+  content: '> ';
+
+  color: var(--accent);
+
+  font-family: var(--mono);
+}
+
+/* Glowing underline bar under section titles */
+
+.section-title::after {
+  content: '';
+
+  display: block;
+
+  width: 90px;
+
+  height: 2px;
+
+  margin-top: 18px;
+
+  background: linear-gradient(90deg,
+      var(--accent),
+      transparent);
+
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.5);
+}
+
+/* Terminal font */
+
+.terminal-font {
+  font-family: var(--mono);
+}
+
+/* Keyframes shared across components */
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes glitchShift {
+
+  0%,
+  86%,
+  100% {
+    transform: translate(0);
+    opacity: 0;
+  }
+
+  88% {
+    transform: translate(-3px, 1px);
+    opacity: 0.8;
+  }
+
+  92% {
+    transform: translate(3px, -1px);
+    opacity: 0.6;
+  }
+
+  96% {
+    transform: translate(-2px, 0);
+    opacity: 0.8;
+  }
+}
+
+@keyframes scanlineMove {
+
+  0% {
+    top: -10%;
+  }
+
+  100% {
+    top: 110%;
+  }
+}
+
+@keyframes gridScroll {
+
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 60px;
+  }
+}
+
+@keyframes flicker {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  92% {
+    opacity: 1;
+  }
+
+  93% {
+    opacity: 0.6;
+  }
+
+  94% {
+    opacity: 1;
+  }
+
+  97% {
+    opacity: 0.75;
+  }
+
+  98% {
+    opacity: 1;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .section {
+    padding: 70px 0;
+  }
+}
